@@ -1,4 +1,4 @@
 [web]
-slave-1 ansible_user=vagrant
+192.168.109.138 ansible_ssh_user=mouktar
 [db]
-slave-2 ansible_user=vagrant
+192.168.109.137 ansible_ssh_user=mouktar
