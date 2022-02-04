@@ -1,11 +1,24 @@
-USE {{ mysql_dbname }};
+<?php
+   $dbhost = 'mysql';
+   $dbuser = 'root';
+   $dbpass = 'root';
+   $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+   
+   if(! $conn ) {
+      die('Could not connect: ' . mysql_error());
+   }
+   
+   echo "Connected successfully\n";
+   
+   $sql = 'CREATE Database test_db';
+   $retval = mysql_query( $sql, $conn );
+   
+   echo  "Database test_db created successfully\n";
 
-CREATE TABLE IF NOT EXISTS articles (
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    title VARCHAR(100) NOT NULL,
-    author VARCHAR(100) NOT NULL,
-    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    content TEXT NULL,
-    PRIMARY KEY(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+   if(! $retval ) {
+      die('Could not create database: ' . mysql_error());
+   
 
+   }
+   mysql_close($conn);
+?>
