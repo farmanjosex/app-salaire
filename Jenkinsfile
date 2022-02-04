@@ -3,7 +3,11 @@ node{
     stage('Clone') {
         git 'https://github.com/farmanjosex/app-salaire.git'
     }
-    stage('Build') {
-    sh 'playbook.yml'
+    stage('Ansible') {
+     ansiblePlaybook (
+      become: mouktar
+      playbook: 'playbook.yml'
+      inventory: 'hosts.yml'
+     )
     }
 }
