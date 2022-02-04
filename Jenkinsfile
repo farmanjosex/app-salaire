@@ -3,8 +3,8 @@ node{
     stage('Clone') {
         git 'https://github.com/farmanjosex/ansible-jenkins.git'
     }
-    stage('Ansible') {
+    stage('Build') {
 
-    sh 'ansible-playbook -i hosts.yml playbook.yml'
+    sh 'hosts.yml playbook.yml'
     }
 }
